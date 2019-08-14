@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
+
+    <appender name="INFO" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="file"
+               value="C:/code/self/performance-testing/performance-testing-logs/performance-testing-logs-log4j/temp/logs/log4j.log"/>
+        <param name="Append" value="true"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %p %C [%t] %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="ASYNC-INFO" class="org.apache.log4j.AsyncAppender">
+        <param name="BufferSize" value="512"/>
+        <param name="locationInfo" value="true"/>
+        <appender-ref ref="INFO"/>
+    </appender>
+
+    <root>
+        <priority value="debug"/>
+        <!-- 同步日志 -->
+        <!--<appender-ref ref="INFO"/>-->
+        <!--异步日志-->
+        <appender-ref ref="ASYNC-INFO"/>
+    </root>
+
+</log4j:configuration>
+
